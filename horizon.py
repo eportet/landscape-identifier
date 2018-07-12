@@ -3,7 +3,7 @@ import argparse
 import cv2
 from colors import *
 
-def detect_horizon(image):
+def find_horizon(image):
 
 	height, width = image.shape[:2]
 

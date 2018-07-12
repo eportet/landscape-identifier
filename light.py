@@ -23,28 +23,34 @@ def find_light_source(image):
 			break
 
 
+	roi = None
+
 	if len(contours) < 1:
 		if  draw_bright(avg_brightness, ratio):
-			cv2.circle(image, maxLoc, 50, yellow, 1)
+			cv2.circle(image, maxLoc, 50, yellow, 2)
+			roi = [maxLoc, 50]
 	else:
 		(x,y), radius = cv2.minEnclosingCircle(contours[0])
 		center = (int(x),int(y))
 		radius = int(radius*0.6)
-		print "r:", radius,
+		# print "r:", radius,
 
 		# We have a good contour
 		if radius < 180 and radius > 30:
-			cv2.circle(image, center, radius, yellow, 3)
+			cv2.circle(image, center, radius, yellow, 2)
+			roi = [center, radius]
+
 		# We can pick a good bright spot
 		elif draw_bright(avg_brightness, ratio):
-			cv2.circle(image, maxLoc, 50, yellow, 3)
+			cv2.circle(image, maxLoc, 50, yellow, 2)
+			roi = [maxLoc, 50]
 		# Dont display a light source
 
 
-	print 'avg:', avg_brightness, 'max:', maxVal, 'ratio:', ratio,
+	# print 'avg:', avg_brightness, 'max:', maxVal, 'ratio:', ratio,
 
 
-	return image
+	return image, roi
 
 def draw_bright(avg, r):
 	if  avg < 120 and r < 0.39:
