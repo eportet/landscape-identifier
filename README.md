@@ -6,6 +6,15 @@ Uses image processing manipulations from OpenCV and image classification from Ca
 - Describe the time of day
 - Identify the setting
 
+## Results
+
+Here are some outputs with impressive results.
+
+![Image 1](img/out/image2.png)
+![Image 2](img/out/image5.png)
+![Image 3](img/out/image9.png)
+![Image 4](img/out/image17.png)
+
 ## OpenCV
 
 The version used was `3.4.1` 
